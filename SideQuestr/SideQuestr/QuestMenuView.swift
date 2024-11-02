@@ -1,51 +1,62 @@
 import SwiftUI
-struct QuestMenuView: View {
-    @State private var quests: [Quest] = [
-        Quest(title: "Quest 1", isCompleted: false),
-        Quest(title: "Quest 2", isCompleted: false),
-        Quest(title: "Quest 3", isCompleted: false)
+
+class QuestModel: ObservableObject {
+    @Published var quests: [String: Bool] = [
+        "Quest 1": true,
+        "Quest 2": false,
+        "Quest 3": false,
+        "Quest 4": false,
+        "Quest 5": true,
+        "Quest 6": false,
+        "Quest 7": false,
+        "Quest 8": true,
+        "Quest 9": false,
+        "Quest 10": false
     ]
     
-    var body: some View {
-        VStack(spacing: 16) { // Spacing between each quest box
-            ForEach(quests.indices, id: \.self) { index in
-                HStack {
-                    Text(quests[index].title)
-                        .font(.headline)
-                        .padding() // Add padding around the text
-                    Spacer() // Pushes the checkbox to the right
-                    Toggle(isOn: $quests[index].isCompleted) {
-                        Text("") // Empty label to create checkbox effect
-                    }
-                    .toggleStyle(CheckBoxToggleStyle()) // U    se a custom toggle style
-                }
-                .padding()
-                .background(Color.gray.opacity(0.2)) // Light gray background for the box
-                .cornerRadius(10) // Rounded corners
-            }
+    // Function to mark a quest as completed
+    func completeQuest(_ questTitle: String) {
+        if quests.keys.contains(questTitle) {
+            quests[questTitle] = true
         }
-        .padding()
-        .navigationTitle("Quest Menu") // Set the title for the destination view
     }
 }
 
-// Data model for a Quest
-struct Quest {
-    var title: String
-    var isCompleted: Bool
-}
+struct QuestMenuView: View {
+    @ObservedObject var questModel: QuestModel
 
-// Custom Toggle Style to make it look like a checkbox
-struct CheckBoxToggleStyle: ToggleStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        Button(action: { configuration.isOn.toggle() }) {
-            HStack {
-                configuration.label
-                Spacer()
-                Image(systemName: configuration.isOn ? "checkmark.square" : "square")
-                    .foregroundColor(configuration.isOn ? .blue : .gray)
+    var body: some View {
+        ScrollView {
+            VStack(spacing: 16) {
+                ForEach(sortedQuests, id: \.key) { questTitle, isCompleted in
+                    HStack {
+                        Text(questTitle)
+                            .font(.headline)
+                            .foregroundColor(.black)
+                            .padding()
+                        Spacer()
+
+                        Image(systemName: isCompleted ? "checkmark.square" : "square")
+                            .foregroundColor(isCompleted ? .black : .gray)
+                    }
+                    .padding()
+                    .background(isCompleted ? Color.green.opacity(0.6) : Color.white)
+                    .cornerRadius(10)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.gray.opacity(0.4), lineWidth: isCompleted ? 0 : 1)
+                    )
+                }
             }
+            .padding() // Ensure padding around the VStack
         }
+        .navigationTitle("Quest Menu")
+    }
+
+
+    // Computed property to sort quests by completion status
+    private var sortedQuests: [(key: String, value: Bool)] {
+        questModel.quests.sorted { !$0.value && $1.value }
     }
 }
 
