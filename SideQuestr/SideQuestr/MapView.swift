@@ -7,37 +7,56 @@
 
 import SwiftUI
 import MapKit
+import CoreLocation
 
+class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
+    private let manager = CLLocationManager()
+    @Published var isAuthorized: Bool = false
+
+    override init() {
+        super.init()
+        manager.delegate = self
+        manager.requestAlwaysAuthorization()
+        checkAuthorizationStatus()
+    }
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        checkAuthorizationStatus()
+    }
+
+    public func checkAuthorizationStatus() {
+        isAuthorized = manager.authorizationStatus == .authorizedAlways || manager.authorizationStatus == .authorizedWhenInUse
+    }
+}
 
 struct MapView: View {
-
+    @StateObject private var locationManager = LocationManager()
     @State private var location: MapCameraPosition = .userLocation(fallback: .automatic)
+    @State private var progress: Double = 0.5 // Sample progress value
     @State private var message: String = ""
     @State private var userInput: String = ""
-    @State private var progress: Double = 0.5
-    @State var showingNotice = false
-    
+
     var body: some View {
         ZStack {
-            VStack {
-                Map(position: $location)
-                    .mapControls {
-                        MapUserLocationButton()
-                        MapPitchToggle()
-                    }
+            Map(position: $location)
+                .mapControls {
+                    MapUserLocationButton()
+                    MapPitchToggle()
+                }
+            
+            if !locationManager.isAuthorized {
+                LocationNotAllowed()
             }
             
-            if showingNotice {
-                FloatingNotice(showingNotice: $showingNotice)
-                    .transition(.scale) // Optional: add transition effect
-            }
             VStack {
                 Spacer()
-                CircularXPBar(progress: progress, color: .blue)
+                CircularXPBar(progress: progress, color: .purple)
                     .frame(width: 100, height: 100) // Adjust size as needed
-                    .position(x:80, y: 45)
-                        }
-
+                    .padding(.bottom, 20)
+            }
+        }
+        .onAppear {
+            locationManager.checkAuthorizationStatus()
         }
     }
 }
