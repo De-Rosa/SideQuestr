@@ -42,12 +42,7 @@ struct MapView: View {
                     MapUserLocationButton()
                     MapPitchToggle()
                 }
-
-            VStack {
-                RoundedRectangle(cornerRadius: 50)
-                    .padding()
-            }
-
+            
             if !locationManager.isAuthorized {
                 LocationNotAllowed()
             }

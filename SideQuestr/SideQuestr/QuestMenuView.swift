@@ -49,14 +49,3 @@ struct CheckBoxToggleStyle: ToggleStyle {
     }
 }
 
-func quest(title: String, tags: String) -> some View {
-    Button {
-    } label: {
-        Text(title)
-            .frame(maxWidth: .infinity) // Make the button expand to the available width
-            .padding()
-            .background(Color.blue) // Optional: Background color for visibility
-            .foregroundColor(.white) // Optional: Text color
-            .cornerRadius(8) // Optional: Rounded corners
-    }
-}
