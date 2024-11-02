@@ -14,7 +14,6 @@ struct TabBarView: View {
         TabView {
             MapView()
                 .tabItem { Label("Map", systemImage: "map") }
-            QuestMenuView()
                 .tabItem { Label("Quests", systemImage: "questionmark.app") }
         }
     }
