@@ -7,40 +7,57 @@
 
 import SwiftUI
 import MapKit
+import CoreLocation
 
 struct MapView: View {
+    @State private var location: MapCameraPosition = .userLocation(fallback: .automatic)
+    @State private var isAuthorised =  CLLocationManager().authorizationStatus == .authorizedAlways
+  
     @State private var message: String = ""
     @State private var userInput: String = ""
 
     var body: some View {
-        NavigationView { // Ensure the entire view is in a NavigationView
-            VStack {
-                Map(initialPosition: .region(region))
+        ZStack {
+          NavigationView { // Ensure the entire view is in a NavigationView
+              VStack {
+                  Map(initialPosition: .region(region))
+                  .mapControls {
+                      MapUserLocationButton()
+                      MapPitchToggle()
+                  }
+                  .onAppear() {
+                      CLLocationManager().requestAlwaysAuthorization()
+                  }
+                
+                  if (!isAuthorised) {
+                      LocationNotAllowed()
+                  }
+                
+                  NavigationLink(destination: QuestMenuView()) {
+                      // Create a round rectangular blue button
+                      Text("Quest Menu") // Text for the button
+                          .font(.headline)
+                          .frame(maxWidth: .infinity) // Makes the button expand to the available width
+                          .padding()
+                          .background(Color.blue) // Set the background color to blue
+                          .foregroundColor(.white) // Text color
+                          .cornerRadius(10) // Rounded corners
+                          .padding(.horizontal) // Add some horizontal padding
+                  }
+                  .padding(.top) // Add some top padding to the NavigationLink
 
-                NavigationLink(destination: QuestMenuView()) {
-                    // Create a round rectangular blue button
-                    Text("Quest Menu") // Text for the button
-                        .font(.headline)
-                        .frame(maxWidth: .infinity) // Makes the button expand to the available width
-                        .padding()
-                        .background(Color.blue) // Set the background color to blue
-                        .foregroundColor(.white) // Text color
-                        .cornerRadius(10) // Rounded corners
-                        .padding(.horizontal) // Add some horizontal padding
-                }
-                .padding(.top) // Add some top padding to the NavigationLink
+                  Text("SideQuestr")
 
-                Text("SideQuestr")
-
-                if !message.isEmpty {
-                    Text(message)
-                        .font(.headline)
-                        .padding()
-                }
-            }
-            .padding()
-            .navigationTitle("Map View") // Optional: set a title for the NavigationView
-        }
+                  if !message.isEmpty {
+                      Text(message)
+                          .font(.headline)
+                          .padding()
+                  }
+              }
+              .padding()
+              .navigationTitle("Map View") // Optional: set a title for the NavigationView
+          }
+       }
     }
 
     func quest(title: String, tags: String) -> some View {
@@ -119,4 +136,3 @@ struct CheckBoxToggleStyle: ToggleStyle {
 #Preview {
     MapView()
 }
-
