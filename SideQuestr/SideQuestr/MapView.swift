@@ -145,7 +145,7 @@ struct QuestMenuView: View {
                     )
                 }
             }
-            .padding()
+            .padding() // Ensure padding around the VStack
         }
         .navigationTitle("Quest Menu")
     }
@@ -156,6 +156,39 @@ struct QuestMenuView: View {
     }
 }
 
+struct QuestMenuView: View {
+    @ObservedObject var questModel: QuestModel
+
+    var body: some View {
+        ScrollView {
+            VStack(spacing: 16) {
+                ForEach(sortedQuests, id: \.key) { questTitle, isCompleted in
+                    HStack {
+                        Text(questTitle)
+                            .font(.headline)
+                            .foregroundColor(.black)
+                            .padding()
+                        Spacer()
+
+                        Image(systemName: isCompleted ? "checkmark.square" : "square")
+                            .foregroundColor(isCompleted ? .black : .gray)
+                    }
+                    .padding()
+                    .background(isCompleted ? Color.green.opacity(0.6) : Color.white)
+                    .cornerRadius(10)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.gray.opacity(0.4), lineWidth: isCompleted ? 0 : 1)
+                    )
+                }
+            }
+            .padding() // Ensure padding around the VStack
+        }
+        .navigationTitle("Quest Menu")
+    }
+}
+
 #Preview {
     MapView()
 }
+
