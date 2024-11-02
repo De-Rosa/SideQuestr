@@ -15,6 +15,10 @@ struct LocationNotAllowed: View {
             Color(.black)
                 .opacity(0.3)
             VStack {
+                Image("cross")
+                    .resizable()
+                    .frame(width: 50.0, height: 50.0)
+                    
                 Text("This app requires location services to work.")
                     .font(.title2)
                     .fontWeight(.bold)

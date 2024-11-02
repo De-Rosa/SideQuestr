@@ -186,7 +186,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5991CA6C2CD65A5B00389D48 /* Build configuration list for PBXProject "Sidequestr" */;
+			buildConfigurationList = 5991CA6C2CD65A5B00389D48 /* Build configuration list for PBXProject "SideQuestr" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -525,7 +525,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5991CA6C2CD65A5B00389D48 /* Build configuration list for PBXProject "Sidequestr" */ = {
+		5991CA6C2CD65A5B00389D48 /* Build configuration list for PBXProject "SideQuestr" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5991CA932CD65A5D00389D48 /* Debug */,
