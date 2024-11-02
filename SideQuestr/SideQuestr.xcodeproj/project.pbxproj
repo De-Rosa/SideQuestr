@@ -186,7 +186,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5991CA6C2CD65A5B00389D48 /* Build configuration list for PBXProject "Sidequestr" */;
+			buildConfigurationList = 5991CA6C2CD65A5B00389D48 /* Build configuration list for PBXProject "SideQuestr" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -396,13 +396,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SideQuestr/Preview Content\"";
-				DEVELOPMENT_TEAM = 7X5VN34S38;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Allows for updating where you have been on the map.";
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Allows for updating where you have been on the map.";
-				INFOPLIST_KEY_NSLocationUsageDescription = "Allows for updating where you have been on the map.";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Allows for updating where you have been on the map.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -429,13 +424,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SideQuestr/Preview Content\"";
-				DEVELOPMENT_TEAM = 7X5VN34S38;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Allows for updating where you have been on the map.";
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Allows for updating where you have been on the map.";
-				INFOPLIST_KEY_NSLocationUsageDescription = "Allows for updating where you have been on the map.";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Allows for updating where you have been on the map.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -525,7 +515,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5991CA6C2CD65A5B00389D48 /* Build configuration list for PBXProject "Sidequestr" */ = {
+		5991CA6C2CD65A5B00389D48 /* Build configuration list for PBXProject "SideQuestr" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5991CA932CD65A5D00389D48 /* Debug */,
