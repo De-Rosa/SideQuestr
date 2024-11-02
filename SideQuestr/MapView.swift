@@ -6,10 +6,19 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct MapView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Map(initialPosition: .region(region))
+    }
+    
+    private var region: MKCoordinateRegion {
+        MKCoordinateRegion(
+            center: CLLocationCoordinate2D(
+                latitude: 54.757663636, longitude: -1.575164366),
+            span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        )
     }
 }
 

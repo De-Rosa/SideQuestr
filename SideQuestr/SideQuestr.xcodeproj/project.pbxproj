@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		5991CAA12CD660B000389D48 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5991CAA02CD660B000389D48 /* MapView.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		5991CA822CD65A5D00389D48 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +31,7 @@
 		5991CA712CD65A5B00389D48 /* SideQuestr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SideQuestr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5991CA812CD65A5D00389D48 /* SideQuestrTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SideQuestrTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5991CA8B2CD65A5D00389D48 /* SideQuestrUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SideQuestrUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5991CAA02CD660B000389D48 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -75,6 +80,7 @@
 		5991CA682CD65A5B00389D48 = {
 			isa = PBXGroup;
 			children = (
+				5991CAA02CD660B000389D48 /* MapView.swift */,
 				5991CA732CD65A5B00389D48 /* SideQuestr */,
 				5991CA842CD65A5D00389D48 /* SideQuestrTests */,
 				5991CA8E2CD65A5D00389D48 /* SideQuestrUITests */,
@@ -236,6 +242,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5991CAA12CD660B000389D48 /* MapView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
