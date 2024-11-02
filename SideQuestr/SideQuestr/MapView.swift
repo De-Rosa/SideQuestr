@@ -10,26 +10,23 @@ import MapKit
 import CoreLocation
 
 struct MapView: View {
-    
+    @State private var location: MapCameraPosition = .userLocation(fallback: .automatic)
+    @State private var isAuthorised =  CLLocationManager().authorizationStatus != .authorizedAlways
     var body: some View {
         ZStack {
-            Map(initialPosition: .region(region))
+            Map(position: $location)
+                .mapControls {
+                    MapUserLocationButton()
+                    MapPitchToggle()
+                }
                 .onAppear() {
                     CLLocationManager().requestAlwaysAuthorization()
                 }
             
-            if (CLLocationManager().authorizationStatus != .authorizedAlways) {
+            if (isAuthorised) {
                 LocationNotAllowed()
             }
         }
-    }
-    
-    private var region: MKCoordinateRegion {
-        MKCoordinateRegion(
-            center: CLLocationCoordinate2D(
-                latitude: 54.757663636, longitude: -1.575164366),
-            span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-        )
     }
 }
 
