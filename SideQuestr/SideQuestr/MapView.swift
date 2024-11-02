@@ -7,10 +7,21 @@
 
 import SwiftUI
 import MapKit
+import CoreLocation
 
 struct MapView: View {
+    
     var body: some View {
-        Map(initialPosition: .region(region))
+        ZStack {
+            Map(initialPosition: .region(region))
+                .onAppear() {
+                    CLLocationManager().requestAlwaysAuthorization()
+                }
+            
+            if (CLLocationManager().authorizationStatus != .authorizedAlways) {
+                LocationNotAllowed()
+            }
+        }
     }
     
     private var region: MKCoordinateRegion {
