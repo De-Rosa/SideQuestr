@@ -32,7 +32,7 @@ struct QuestMenuView: View {
                     HStack {
                         Text(questTitle)
                             .font(.headline)
-                            .foregroundColor(.black)
+                            .foregroundColor(isCompleted ? .white : .black)
                             .padding()
                         Spacer()
 
