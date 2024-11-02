@@ -11,7 +11,9 @@ import SwiftUI
 struct SideQuestrApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MapView()
         }
     }
 }
+
+

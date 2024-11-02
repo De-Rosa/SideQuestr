@@ -8,17 +8,29 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var message: String = ""
+    @State private var userInput: String = ""
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationView {
+            NavigationLink {
+                    // destination view to navigation to
+                    ContentView()
+                } label: {
+                    VStack {
+                        Image(systemName: "globe")
+                            .imageScale(.large)
+                            .foregroundColor(.accentColor)
+                        Text("Hello, world!")
+                    }
+                    .padding()
+                }
         }
-        .padding()
     }
 }
 
 #Preview {
     ContentView()
 }
+
+
