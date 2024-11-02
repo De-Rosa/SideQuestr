@@ -78,12 +78,16 @@ struct MapView: View {
                     
                 }
             }
+            Map(position: $location)
+                .mapControls {
+                    MapUserLocationButton()
+                    MapPitchToggle()
+                }
             
             if !locationManager.isAuthorized {
                 LocationNotAllowed()
             }
         }
-            
         .onAppear {
             locationManager.checkAuthorizationStatus()
         }

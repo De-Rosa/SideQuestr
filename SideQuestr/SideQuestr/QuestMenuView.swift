@@ -53,6 +53,7 @@ struct QuestMenuView: View {
         .navigationTitle("Quest Menu")
     }
 
+
     // Computed property to sort quests by completion status
     private var sortedQuests: [(key: String, value: Bool)] {
         questModel.quests.sorted { !$0.value && $1.value }
