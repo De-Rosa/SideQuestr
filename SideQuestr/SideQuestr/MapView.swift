@@ -26,13 +26,9 @@ struct MapView: View {
                 .onAppear() {
                     CLLocationManager().requestAlwaysAuthorization()
                 }
+            TabBarView()
             
-            VStack {
-                RoundedRectangle(cornerRadius: 50)
-                    .padding()
-            }
-            
-            if (false) {
+            if (!isAuthorised) {
                 LocationNotAllowed()
             }
         }
