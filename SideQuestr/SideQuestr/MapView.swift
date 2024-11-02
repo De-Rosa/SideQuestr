@@ -32,6 +32,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
 struct MapView: View {
     @StateObject private var locationManager = LocationManager()
     @State private var location: MapCameraPosition = .userLocation(fallback: .automatic)
+    @State private var progress: Double = 0.5
     @State private var message: String = ""
     @State private var userInput: String = ""
 
@@ -47,6 +48,7 @@ struct MapView: View {
                             MapUserLocationButton()
                             MapPitchToggle()
                         }
+
                     
                     HStack {
                         Button(action: {
@@ -77,8 +79,14 @@ struct MapView: View {
                     }
                     
                 }
+                
             }
-            
+            VStack {
+                Spacer()
+                CircularXPBar(progress: progress, color: .pink)
+                .frame(width: 100, height: 100)
+                .position(x:80,y:95)
+            }
             if !locationManager.isAuthorized {
                 LocationNotAllowed()
             }
