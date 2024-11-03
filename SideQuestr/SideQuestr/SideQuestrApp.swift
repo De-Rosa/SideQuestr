@@ -23,10 +23,18 @@ struct SideQuestrApp: App {
 struct PersistenceController {
     static let shared = PersistenceController()
     let container: NSPersistentContainer
-    
+    let achievementContainer: NSPersistentContainer
+
     init() {
         container = NSPersistentContainer(name: "LocationModel")
         container.loadPersistentStores { _, error in
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        }
+        
+        achievementContainer = NSPersistentContainer(name: "AchievementModel")
+        achievementContainer.loadPersistentStores { _, error in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }

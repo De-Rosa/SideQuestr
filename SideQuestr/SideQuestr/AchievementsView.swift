@@ -24,6 +24,18 @@ class AchievementModel: ObservableObject {
     }
 }
 
+struct AchievementEntry {
+    var title: String;
+    var completed: Bool;
+    var xp: Int32;
+    
+    init(title: String, completed: Bool, xp: Int32) {
+        self.title = title
+        self.completed = completed
+        self.xp = xp
+    }
+}
+
 struct AchievementMenuView: View {
     @ObservedObject var achievement: AchievementModel
     
