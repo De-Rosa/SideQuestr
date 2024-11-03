@@ -25,6 +25,8 @@ struct MapView: View {
                     
                     HStack {
                         Button(action: {
+                            exp += 5
+                            (level, exp) = levelUp(lvl: level, exp: exp)
                             questModel.completeQuest("Quest \(questModel.quests.count)") // Complete top Quest
                             self.showingNotice = true
                         }, label: {

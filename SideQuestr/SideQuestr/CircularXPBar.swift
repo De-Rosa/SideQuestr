@@ -21,8 +21,6 @@ struct CircularXPBar: View {
     var bgcolor: Color {
         colorScheme == .dark ? Color(UIColor(red: 41/255, green: 41/255, blue: 41/255, alpha: 1)) : .white
     }
-
-    
     
     var body: some View {
         let progress: Double = Double( curr_exp) / Double(plusnLog10(n: level))// Progress value between 0.0 and 1.0
@@ -48,11 +46,4 @@ struct CircularXPBar: View {
                 .foregroundColor(color)
         }
     }
-}
-
-func plusnLog10(n: Int32) -> Int32 {
-    guard n > 0 else {
-        fatalError("n must be greater than 0")
-    }
-    return 10 + Int32(Double(n) * log10(Double(n)))
 }
