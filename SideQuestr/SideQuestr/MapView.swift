@@ -14,7 +14,7 @@ struct MapView: View {
     @State private var location: MapCameraPosition = .userLocation(fallback: .automatic)
     @State private var message: String = ""
     @State private var userInput: String = ""
-    @State private var progress: Double = 0.5
+    @State private var level: Int32 = 15
     @State var showingNotice = false
     
     var body: some View {
@@ -33,7 +33,7 @@ struct MapView: View {
             }
             VStack {
                 Spacer()
-                CircularXPBar(progress: progress, color: .blue)
+                CircularXPBar(level: level, curr_exp: 25)
                     .frame(width: 100, height: 100) // Adjust size as needed
                     .position(x:80, y: 45)
                         }
