@@ -8,7 +8,7 @@ struct MapView: View {
     @State private var location: MapCameraPosition = .userLocation(fallback: .automatic)
     @State private var message: String = ""
     @State private var userInput: String = ""
-
+    @State private var level: Int32 = 15
     @StateObject var questModel = QuestModel() // Initialize questModel here
     @State var showingNotice = false
     
@@ -56,6 +56,12 @@ struct MapView: View {
             if !locationManager.isAuthorized {
                 LocationNotAllowed()
             }
+            VStack {
+                Spacer()
+                CircularXPBar(level: level, curr_exp: 25)
+                    .frame(width: 100, height: 100) // Adjust size as needed
+                    .position(x:80, y: 45)
+                        }
         }
         .onAppear {
             locationManager.checkAuthorizationStatus()

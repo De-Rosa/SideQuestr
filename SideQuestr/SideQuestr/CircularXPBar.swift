@@ -6,11 +6,15 @@
 //
 
 import SwiftUI
+import Foundation
 
 struct CircularXPBar: View {
-    var progress: Double // Progress value between 0.0 and 1.0
+    
     var lineWidth: CGFloat = 20
     var color: Color = .blue
+    var level: Int32
+    var curr_exp: Int32
+    
     @Environment(\.colorScheme) var colorScheme
     
     // Colors that change based on the color scheme
@@ -18,7 +22,10 @@ struct CircularXPBar: View {
         colorScheme == .dark ? Color(UIColor(red: 41/255, green: 41/255, blue: 41/255, alpha: 1)) : .white
     }
 
+    
+    
     var body: some View {
+        let progress: Double = Double( curr_exp) / Double(plusnLog10(n: level))// Progress value between 0.0 and 1.0
         ZStack {
             Circle()
                 .foregroundColor(bgcolor)
@@ -35,7 +42,7 @@ struct CircularXPBar: View {
                 .rotationEffect(Angle(degrees: -90))
                 .animation(.easeInOut(duration: 1.0), value: progress)
 
-            Text("XP")
+            Text("\(level)")
                 .font(.largeTitle)
                 .bold()
                 .foregroundColor(color)
@@ -43,3 +50,9 @@ struct CircularXPBar: View {
     }
 }
 
+func plusnLog10(n: Int32) -> Int32 {
+    guard n > 0 else {
+        fatalError("n must be greater than 0")
+    }
+    return 10 + Int32(Double(n) * log10(Double(n)))
+}
