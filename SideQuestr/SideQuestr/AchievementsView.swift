@@ -53,7 +53,7 @@ struct AchievementMenuView: View {
                 
                 ForEach(achievementList, id: \.0) { achievementTitle, isCompleted in
                     HStack {
-                        Text(achievementTitle)
+                        Text("\(achievementTitle)")
                             .font(.system(size: 22, weight: .bold))
                             .foregroundColor(isCompleted ? .black : .black)
                             .padding()

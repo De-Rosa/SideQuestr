@@ -8,8 +8,8 @@ struct MapView: View {
     @State private var showingNotice = false
     @State private var message: String = ""
     @State private var userInput: String = ""
-    @State private var level: Int32 = 15
-    @State private var exp: Int32 = 15
+    @State private var level: Int32 = Int32(UserDefaults.standard.integer(forKey: "level")) // Load level from UserDefaults
+    @State private var exp: Int32 = Int32(UserDefaults.standard.integer(forKey: "exp"))   // Load exp from UserDefaults
     @StateObject var questModel = QuestModel()
 
     var body: some View {
@@ -24,16 +24,30 @@ struct MapView: View {
             VStack {
                 Spacer()
                 CircularXPBar(level: level, curr_exp: exp)
-                    .frame(width: 100, height: 100) 
+                    .frame(width: 100, height: 100)
                     .position(x:80, y: 45)
-            }        
+            }
         }
+        .onChange(of: level) { newValue in
+            saveLevel(level: newValue)
+        }
+        .onChange(of: exp) { newValue in
+            saveExp(exp: newValue)
+        }
+    }
+
+    private func saveLevel(level: Int32) {
+        UserDefaults.standard.set(level, forKey: "level")
+    }
+
+    private func saveExp(exp: Int32) {
+        UserDefaults.standard.set(exp, forKey: "exp")
     }
 }
 
 struct MapViewWrapper: UIViewRepresentable {
     @Binding var locations: [CLLocation]
-    let circleRadius: CLLocationDistance = 1000 
+    let circleRadius: CLLocationDistance = 1000
 
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
