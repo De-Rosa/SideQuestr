@@ -29,9 +29,22 @@
 		5991CA8B2CD65A5D00389D48 /* SideQuestrUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SideQuestrUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		5991CB732CD6F7F700389D48 /* Exceptions for "SideQuestr" folder in "SideQuestr" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 5991CA702CD65A5B00389D48 /* SideQuestr */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		5991CA732CD65A5B00389D48 /* SideQuestr */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				5991CB732CD6F7F700389D48 /* Exceptions for "SideQuestr" folder in "SideQuestr" target */,
+			);
 			path = SideQuestr;
 			sourceTree = "<group>";
 		};
@@ -399,6 +412,7 @@
 				DEVELOPMENT_TEAM = 7X5VN34S38;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SideQuestr/Info.plist;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Allows for updating where you have been on the map.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Allows for updating where you have been on the map.";
 				INFOPLIST_KEY_NSLocationUsageDescription = "Allows for updating where you have been on the map.";
@@ -432,6 +446,7 @@
 				DEVELOPMENT_TEAM = 7X5VN34S38;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SideQuestr/Info.plist;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Allows for updating where you have been on the map.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Allows for updating where you have been on the map.";
 				INFOPLIST_KEY_NSLocationUsageDescription = "Allows for updating where you have been on the map.";
