@@ -1,10 +1,16 @@
 import SwiftUI
 import MapKit
+import CoreLocation
 
 struct MapView: View {
     @State var location: MapCameraPosition = .userLocation(fallback: .automatic)
     @ObservedObject private var locationManager = LocationManager.shared
     @State private var showingNotice = false
+    @State private var message: String = ""
+    @State private var userInput: String = ""
+    @State private var level: Int32 = 15
+    @State private var exp: Int32 = 15
+    @StateObject var questModel = QuestModel()
 
     var body: some View {
         ZStack {
@@ -15,13 +21,19 @@ struct MapView: View {
                 FloatingNotice(showingNotice: $showingNotice)
                     .transition(.scale)
             }
+            VStack {
+                Spacer()
+                CircularXPBar(level: level, curr_exp: exp)
+                    .frame(width: 100, height: 100) 
+                    .position(x:80, y: 45)
+            }        
         }
     }
 }
 
 struct MapViewWrapper: UIViewRepresentable {
     @Binding var locations: [CLLocation]
-    let circleRadius: CLLocationDistance = 1000 // Set your desired radius here (in meters)
+    let circleRadius: CLLocationDistance = 1000 
 
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
@@ -114,6 +126,7 @@ class Coordinator: NSObject, MKMapViewDelegate {
             var lon2 = lngRadian + atan2(sin(bearing) * sin(distance) * cos(latRadian),cos(distance) - sin(latRadian) * sin(lat2))
             lon2 = fmod(lon2 + 3 * .pi, 2 * .pi) - .pi  // normalise to -180..+180º
             return CLLocationCoordinate2D(latitude: lat2 * (180.0 / .pi), longitude: lon2 * (180.0 / .pi))
+
         }
     }
 }
