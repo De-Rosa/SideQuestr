@@ -16,7 +16,7 @@ public class LocationManager: NSObject, ObservableObject, CLLocationManagerDeleg
     override init() {
         super.init()
         manager.delegate = self
-        manager.desiredAccuracy = kCLLocationAccuracyReduced
+        manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.requestAlwaysAuthorization()
         checkAuthorizationStatus()
         startBackgroundTracking()
@@ -26,7 +26,7 @@ public class LocationManager: NSObject, ObservableObject, CLLocationManagerDeleg
             .store(in: &cancellables)
     }
 
-    private var minLocationDistance: Double = 50.0 // in metres
+    private var minLocationDistance: Double = 100.0 // in metres
     public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let newLocation = locations.last else { return }
         
